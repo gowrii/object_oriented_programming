@@ -23,7 +23,10 @@ class Instructor < Person
 end
 person = Instructor.new("Chris")
 person.greeting
+person.teach
 
-person = Student.new("Cristina")
-person.greeting
-
+person2 = Student.new("Cristina")
+person2.greeting
+person2.learn
+person2.teach
+#It doesn't work because the teach method is contained within the Instructor class and is not accessable to the Student class.
