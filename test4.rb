@@ -25,7 +25,6 @@ class Product
 	def to_s
 		"#{@quantity} #{@name} : #{total}"
 	end
-
 end
 
 class Exempt < Product
@@ -59,24 +58,32 @@ end
 			tax_total = x.sales_tax
 		end
 		end
-
-
+		
+	def find_total
+		b_total == 0.0
+		@container.each do |y|
+			b_total = y.total
+		end
+	end
 end
 #input1
 book = Exempt.new(1, "book", 12.49)
+
 music = Product.new(1,"music CD", 14.99)
+
 chocolate_bar = Exempt.new(1, "chocolate bar", 0.85)
+
 
 #input2
 
-imported_perfuma = Imported.new(1, "imported bottle of perfume", 47.50)
-imported_chocolatesb = ImportedExempt.new(1, "imported box of chocolates", 10.00)
+imported_perfuma = Imported.new(1, "imported bottle of perfume", 54.65)
+imported_chocolatesb = ImportedExempt.new(1, "imported box of chocolates", 10.50)
 
 #input3
-imported_perfum = Imported.new(1, "imported bottle of perfume", 27.99)
-perfume =Product.new(1, "bottle of perfume", 18.99)
+imported_perfum = Imported.new(1, "imported bottle of perfume", 32.19)
+perfume =Product.new(1, "bottle of perfume", 20.89)
 pills = Exempt.new(1, "packet of headache pills", 9.75)
-imported_chocolates = ImportedExempt.new(1, "imported box of chocolates", 11.25)
+imported_chocolates = ImportedExempt.new(1, "imported box of chocolates", 11.85)
 
 
 puts "--------------------------"
@@ -86,9 +93,6 @@ basket1.add_product(music)
 basket1.add_product(chocolate_bar)
 puts "Output 1:"
 puts basket1.find_total_sales_tax
-puts "Sales Taxes: #{book.sales_tax + music.sales_tax + chocolate_bar.sales_tax}"
-puts "Total: #{book.total + music.total + chocolate_bar.total}"
-
 
 puts "--------------------------"
 basket2 = Basket.new
@@ -96,9 +100,6 @@ basket2.add_product(imported_perfuma)
 basket2.add_product(imported_chocolatesb)
 puts "Output 2:"
 puts basket2.find_total_sales_tax
-puts "Sales Taxes: #{imported_perfuma.sales_tax + imported_chocolatesb.sales_tax}"
-puts "Total: #{imported_perfuma.total + imported_chocolatesb.total}"
-
 
 puts "--------------------------"
 basket3 = Basket.new
@@ -107,8 +108,6 @@ basket3.add_product(perfume)
 basket3.add_product(pills)
 basket3.add_product(imported_chocolates)
 puts "Output 3:"
-puts basket3.find_total_sales_tax
-"Sales Taxes: #{imported_perfum.sales_tax + perfume.sales_tax + pills.sales_tax + imported_chocolates.sales_tax}"
-puts "Total: #{imported_perfum.total + perfume.total + pills.total + imported_chocolates.total}"
+puts basket2.find_total_sales_tax
 
 
